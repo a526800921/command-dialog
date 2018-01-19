@@ -1,4 +1,4 @@
-# gaojiu_command
+# Command_Dialog
 弹窗输入口令
 
 // 直接调用 CommandDialog((value, callback) => {}, options) 函数显示弹窗  
