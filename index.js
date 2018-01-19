@@ -2,7 +2,7 @@
  * @Author: Jafish 
  * @Date: 2017-12-26 15:56:30 
  * @Last Modified by: Jafish
- * @Last Modified time: 2017-12-28 16:06:38
+ * @Last Modified time: 2018-01-19 16:05:50
  */
 ((win, doc) => {
    // 方便查询元素
@@ -25,13 +25,13 @@
       this.showCommand() // 显示输口令界面
 
       // 节点创建完成后获取节点
-      this.shadowNode = _$('.gaojiu_command_shadow', this.bodyNode) // 遮罩层节点
-      this.removeShadowNode = _$('.GC_shadow_remove', this.shadowNode) // 删除遮罩层的节点
-      this.placeholderNode = _$('.GC_input_placeholder', this.shadowNode) // 提示语言的节点
-      this.inputNode = _$('.GC_input', this.shadowNode) // 输入框节点
-      this.removeImgNode = _$('.GC_input_remove', this.shadowNode) // 删除图标的节点
-      this.hintNode = _$('.GC_hint', this.shadowNode) // 提示的节点
-      this.submitNode = _$('.GC_submit', this.shadowNode) // 确定的节点
+      this.shadowNode = _$('.command_dialog_shadow', this.bodyNode) // 遮罩层节点
+      this.removeShadowNode = _$('.CD_shadow_remove', this.shadowNode) // 删除遮罩层的节点
+      this.placeholderNode = _$('.CD_input_placeholder', this.shadowNode) // 提示语言的节点
+      this.inputNode = _$('.CD_input', this.shadowNode) // 输入框节点
+      this.removeImgNode = _$('.CD_input_remove', this.shadowNode) // 删除图标的节点
+      this.hintNode = _$('.CD_hint', this.shadowNode) // 提示的节点
+      this.submitNode = _$('.CD_submit', this.shadowNode) // 确定的节点
 
       this.addEvent() // 绑定事件
    }
@@ -40,21 +40,21 @@
       // 显示输口令界面
       console.log('显示输入口令界面')
       var shadowNode = doc.createElement('div')
-      shadowNode.className = 'gaojiu_command_shadow'
-      shadowNode.innerHTML = `<div class="GC_box">
-         <div class="GC_shadow_remove"></div>
-         <div class="GC_title"><div class="GC_text_main">${this.viewTitle}</div><div class="GC_text_middle"></div></div>
-         <div class="GC_remark"><div class="GC_text_main">${this.viewSubTitle}</div><div class="GC_text_middle"></div></div>
+      shadowNode.className = 'command_dialog_shadow'
+      shadowNode.innerHTML = `<div class="CD_box">
+         <div class="CD_shadow_remove"></div>
+         <div class="CD_title"><div class="CD_text_main">${this.viewTitle}</div><div class="CD_text_middle"></div></div>
+         <div class="CD_remark"><div class="CD_text_main">${this.viewSubTitle}</div><div class="CD_text_middle"></div></div>
 
-            <div class="GC_input_box">
-               <div class="GC_input_placeholder">输入口令</div>
-               <input class="GC_input" type="text" />
-               <div class="GC_input_remove"></div>
+            <div class="CD_input_box">
+               <div class="CD_input_placeholder">输入口令</div>
+               <input class="CD_input" type="text" />
+               <div class="CD_input_remove"></div>
             </div>
 
-         <div class="GC_hint"></div>
+         <div class="CD_hint"></div>
 
-         <div class="GC_submit">确定</div>
+         <div class="CD_submit">确定</div>
       </div>`
 
       // 添加节点
