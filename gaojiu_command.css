@@ -1,0 +1,151 @@
+.gaojiu_command_shadow {
+   position: absolute;
+   z-index: 2001;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, .2);
+}
+
+.gaojiu_command_shadow .GC_box {
+   width: 30.2rem;
+   height: 35.2132rem;
+   background-image: url('./image/bg.png');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   margin: 0 auto;
+   margin-top: 6.5rem;
+   overflow: hidden;
+   position: relative;
+}
+
+.gaojiu_command_shadow .GC_shadow_remove {
+   width: 2rem;
+   height: 2rem;
+   background-image: url('./image/remove.png');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   position: absolute;
+   z-index: 5;
+   right: 0.6rem;
+   top: 4.4rem;
+}
+
+.gaojiu_command_shadow .GC_title {
+   height: 5.4rem;
+   overflow: hidden;
+   font-size: 2.2rem;
+   line-height: 2.7rem;
+   color: #fff;
+   text-align: center;
+   margin-top: 4.9rem;
+   padding: 0 7%;
+}
+
+.gaojiu_command_shadow .GC_remark {
+   height: 4.2rem;
+   overflow: hidden;
+   margin-top: 1.1rem;
+   font-size: 1.6rem;
+   line-height: 2.1rem;
+   color: #fff;
+   text-align: center;
+   padding: 0 7%;
+   box-sizing: border-box;
+}
+
+.gaojiu_command_shadow .GC_relative {
+   position: relative;
+}
+
+.gaojiu_command_shadow .GC_text_middle {
+   display: inline-block;
+   width: 0;
+   height: 100%;
+   vertical-align: middle;
+}
+
+.gaojiu_command_shadow .GC_text_main {
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.gaojiu_command_shadow .GC_input_box {
+   margin: 4.75rem 2rem 0;
+   background-color: #eee;
+   border-radius: 2.25rem;
+   overflow: hidden;
+   position: relative;
+   z-index: 0;
+   box-sizing: border-box;
+   padding: 0 3rem;
+}
+
+.gaojiu_command_shadow .GC_input_placeholder {
+   font-size: 1.8rem;
+   line-height: 5rem;
+   text-align: center;
+   color: #999;
+   position: absolute;
+   z-index: 10;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+}
+
+.gaojiu_command_shadow .GC_input {
+   font-size: 1.8rem;
+   line-height: 3rem;
+   color: #333;
+   height: 3rem;
+   margin: 1rem auto;
+   width: 100%;
+   background-color: transparent;
+   border: 0;
+}
+
+.gaojiu_command_shadow .GC_input::-ms-clear,
+.gaojiu_command_shadow .GC_input::-ms-reveal {
+   display: none;
+}
+
+.gaojiu_command_shadow .GC_input_remove {
+   width: 2.4rem;
+   height: 2.4rem;
+   background-image: url('./image/remove.png');
+   background-repeat: no-repeat;
+   background-size: 50% 50%;
+   background-position: 25% 50%;
+   position: absolute;
+   z-index: 5;
+   right: 0.45rem;
+   top: 50%;
+   margin-top: -1.2rem;
+   visibility: hidden;
+}
+
+.gaojiu_command_shadow .GC_hint {
+   margin-top: 1.4rem;
+   font-size: 1.2rem;
+   line-height: 1.2rem;
+   height: 1.2rem;
+   color: #f77374;
+   text-align: center;
+}
+
+.gaojiu_command_shadow .GC_submit {
+   margin: 1.2rem auto 0;
+   width: 15rem;
+   height: 3.9rem;
+   border-radius: 1.95rem;
+   overflow: hidden;
+   font-size: 1.8rem;
+   line-height: 3.9rem;
+   color: #fff;
+   text-align: center;
+   background-color: #fd575a;
+   background: linear-gradient(to right, #ff7050, #fd575a);
+}

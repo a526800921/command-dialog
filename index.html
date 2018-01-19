@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title></title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+   <meta name="format-detection" content="telephone=no" />
+
+   <link href="http://gj.flyzz.net/mobile/resources/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+   />
+   <link href="http://gj.flyzz.net/mobile/statics/css/iconfont.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/swiper-3.2.5.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/zyUpload.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/dialog.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/mobile-select-area.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/ectouch.css" rel="stylesheet" type="text/css" />
+   <link href="http://gj.flyzz.net/mobile/statics/css/gaojiu.css" rel="stylesheet" type="text/css" />
+
+
+   <link href="./gaojiu_command.css" rel="stylesheet">
+</head>
+
+<body style="background-color:#fff;">
+   <button onclick="showCommand()">点击</button>
+</body>
+
+</html>
+<script src="./gaojiu_command.js"></script>
+<script>
+   function showCommand() {
+      // 直接调用 GAOJIU_showCommand 函数显示弹窗
+      // 该方法传入一个函数和一个配置对象，函数接收一个回调函数，配置信息： title: '主标题', subTitle: '副标题'
+      // 传入的函数是点击确定按钮的事件
+      // 回调函数必须执行，且只执行一次
+      // 回调函数接收一个参数，传入false或者不传
+      // 传入false的时候，提示：口令输入错误！
+      // 不传或者传入true的时候则关闭弹窗
+      // 示例如下：
+      GAOJIU_showCommand(function (value, callback) {
+         // value：输入框的值， callback：用来关闭弹窗的函数，必须执行
+         setTimeout(function () {
+            // 模拟ajax请求xxxxxx
+
+            // 第一个参数：是否关闭弹窗，非必填
+            // 第二个参数：输入完成关闭弹窗之后的回调函数，非必填
+            callback(true, function () {
+               console.log('callback')
+            })
+         }, 1000)
+      }, {
+         title: '主要的标题',
+         subTitle: '副标题',
+         // 口令语句设置待定
+      })
+   }
+</script>
