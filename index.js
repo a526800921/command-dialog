@@ -8,7 +8,7 @@
    // 方便查询元素
    var _$ = (selector, node) => (node || doc).querySelector(selector)
 
-   function GaojiuCommand(callback, config = {}) {
+   function CommandDialog(callback, config = {}) {
       if (callback && typeof callback !== 'function') {
          throw Error('callback is not a function')
       }
@@ -36,7 +36,7 @@
       this.addEvent() // 绑定事件
    }
 
-   GaojiuCommand.prototype.showCommand = function() {
+   CommandDialog.prototype.showCommand = function() {
       // 显示输口令界面
       console.log('显示输入口令界面')
       var shadowNode = doc.createElement('div')
@@ -67,7 +67,7 @@
       return true
    }
 
-   GaojiuCommand.prototype.addEvent = function() {
+   CommandDialog.prototype.addEvent = function() {
       // 绑定事件
       this.removeShadowNode.addEventListener('touchend', this.eventListValue.removeShadowEvent)
       this.placeholderNode.addEventListener('touchend', this.eventListValue.placeholderEvent)
@@ -78,7 +78,7 @@
       this.submitNode.addEventListener('touchend', this.eventListValue.onSubmitEvent)
    }
 
-   GaojiuCommand.prototype.removeEvent = function(bestop = true, callback) {
+   CommandDialog.prototype.removeEvent = function(bestop = true, callback) {
       // bestop：输入是否正确, false -> 出错了
       if (!bestop) {
          // 答案错误
@@ -117,7 +117,7 @@
       }
    }
 
-   GaojiuCommand.prototype.eventList = function() {
+   CommandDialog.prototype.eventList = function() {
       // 事件列表
       return {
          removeShadowEvent: e => {
@@ -176,5 +176,5 @@
       }
    }
 
-   win.GAOJIU_showCommand = (callback, config) => new GaojiuCommand(callback, config) // 显示
+   win.CommandDialog = (callback, config) => new CommandDialog(callback, config) // 显示
 })(window, document)
