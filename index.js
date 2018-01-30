@@ -2,16 +2,14 @@
  * @Author: Jafish 
  * @Date: 2017-12-26 15:56:30 
  * @Last Modified by: Jafish
- * @Last Modified time: 2018-01-19 16:05:50
+ * @Last Modified time: 2018-01-30 14:37:27
  */
 ((win, doc) => {
    // 方便查询元素
-   var _$ = (selector, node) => (node || doc).querySelector(selector)
+   let _$ = (selector, node) => (node || doc).querySelector(selector)
 
    function CommandDialog(callback, config = {}) {
-      if (callback && typeof callback !== 'function') {
-         throw Error('callback is not a function')
-      }
+      if (callback && typeof callback !== 'function') throw new Error('callback is not a function')
 
       this.viewTitle = config.title || '输口令进搞酒赢大奖' // 弹窗标题
       this.viewSubTitle = config.subTitle || '千万豪礼等你来抢' // 弹窗副标题
@@ -33,10 +31,13 @@
       this.hintNode = _$('.CD_hint', this.shadowNode) // 提示的节点
       this.submitNode = _$('.CD_submit', this.shadowNode) // 确定的节点
 
+      // 检测是否支持touch事件
+      this.onTouchEnd = 'ontouchend' in this.bodyNode ? 'touchend' : 'click'
+
       this.addEvent() // 绑定事件
    }
 
-   CommandDialog.prototype.showCommand = function() {
+   CommandDialog.prototype.showCommand = function () {
       // 显示输口令界面
       console.log('显示输入口令界面')
       var shadowNode = doc.createElement('div')
@@ -67,18 +68,21 @@
       return true
    }
 
-   CommandDialog.prototype.addEvent = function() {
+   CommandDialog.prototype.addEvent = function () {
       // 绑定事件
-      this.removeShadowNode.addEventListener('touchend', this.eventListValue.removeShadowEvent)
-      this.placeholderNode.addEventListener('touchend', this.eventListValue.placeholderEvent)
-      this.inputNode.addEventListener('input', this.eventListValue.inputChange)
-      this.inputNode.addEventListener('focus', this.eventListValue.inputFocus)
-      this.inputNode.addEventListener('blur', this.eventListValue.inputBlur)
-      this.removeImgNode.addEventListener('touchend', this.eventListValue.removeValue)
-      this.submitNode.addEventListener('touchend', this.eventListValue.onSubmitEvent)
+      let eventListValue = this.eventListValue,
+      onTouchEnd = this.onTouchEnd
+
+      this.removeShadowNode.addEventListener(onTouchEnd, eventListValue.removeShadowEvent)
+      this.placeholderNode.addEventListener(onTouchEnd, eventListValue.placeholderEvent)
+      this.inputNode.addEventListener('input', eventListValue.inputChange)
+      this.inputNode.addEventListener('focus', eventListValue.inputFocus)
+      this.inputNode.addEventListener('blur', eventListValue.inputBlur)
+      this.removeImgNode.addEventListener(onTouchEnd, eventListValue.removeValue)
+      this.submitNode.addEventListener(onTouchEnd, eventListValue.onSubmitEvent)
    }
 
-   CommandDialog.prototype.removeEvent = function(bestop = true, callback) {
+   CommandDialog.prototype.removeEvent = function (bestop = true, callback) {
       // bestop：输入是否正确, false -> 出错了
       if (!bestop) {
          // 答案错误
@@ -87,13 +91,16 @@
          return false
       } else {
          // 答案正常则移除事件
-         this.removeShadowNode.removeEventListener('touchend', this.eventListValue.removeShadowEvent)
-         this.placeholderNode.removeEventListener('touchend', this.eventListValue.placeholderEvent)
-         this.inputNode.removeEventListener('input', this.eventListValue.inputChange)
-         this.inputNode.removeEventListener('focus', this.eventListValue.inputFocus)
-         this.inputNode.removeEventListener('blur', this.eventListValue.inputBlur)
-         this.removeImgNode.removeEventListener('touchend', this.eventListValue.removeValue)
-         this.submitNode.removeEventListener('touchend', this.eventListValue.onSubmitEvent)
+         let eventListValue = this.eventListValue,
+            onTouchEnd = this.onTouchEnd
+
+         this.removeShadowNode.removeEventListener(onTouchEnd, eventListValue.removeShadowEvent)
+         this.placeholderNode.removeEventListener(onTouchEnd, eventListValue.placeholderEvent)
+         this.inputNode.removeEventListener('input', eventListValue.inputChange)
+         this.inputNode.removeEventListener('focus', eventListValue.inputFocus)
+         this.inputNode.removeEventListener('blur', eventListValue.inputBlur)
+         this.removeImgNode.removeEventListener(onTouchEnd, eventListValue.removeValue)
+         this.submitNode.removeEventListener(onTouchEnd, eventListValue.onSubmitEvent)
 
          // 移除节点
          this.bodyNode.removeChild(this.shadowNode)
@@ -117,7 +124,7 @@
       }
    }
 
-   CommandDialog.prototype.eventList = function() {
+   CommandDialog.prototype.eventList = function () {
       // 事件列表
       return {
          removeShadowEvent: e => {
